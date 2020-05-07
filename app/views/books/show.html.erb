@@ -15,9 +15,7 @@
 		</table>
 		<table class="table" id="comment_table">
 			<h3>Comments</h3>
-			<%= render 'book_comments/comments', comments: @comments, book: @book %>
-			<tr border="none"><td><%= render 'devise/shared/error_messages', resource: @comment %></td></tr>
-			<tr border="none"><%= render 'book_comments/comment_form', book: @book, comment: @comment %></tr>
+			<%= render 'book_comments/comment_box', comments: @comments, comment: @comment, book: @book %>
 		</table>
 	</div>
 </div>

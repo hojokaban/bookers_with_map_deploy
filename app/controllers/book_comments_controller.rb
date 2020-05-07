@@ -1,29 +1,10 @@
 class BookCommentsController < ApplicationController
-=begin
-	def create
-		@comment = current_user.book_comments.new(comment_params)
-		@comments = BookComment.all
-		@book = Book.find(@comment.book_id)
-		if @comment.save
-			flash[:notice] = "successfully upload comment!"
-			respond_to do |format|
-				format.html {redirect_to @book}
-				format.js
-			end
-		else
-			@book_new = Book.new
-			@user = @book.user
-			respond_to do |format|
-				format.html {render "books/show" and return}
-				format.js
-			end
-		end
-=end
 
 	def create
+		@comment_new = BookComment.new
 		@comment = current_user.book_comments.new(comment_params)
-		@comments = BookComment.all
 		@book = Book.find(@comment.book_id)
+		@comments = @book.book_comments
 			if @comment.save
 				flash[:notice] = "successfully upload comment!"
 				#redirect_to @book
@@ -43,7 +24,7 @@ class BookCommentsController < ApplicationController
 		else
 			flash[:notice] = "You cannot delete this comment"
 		end
-		redirect_to book
+		#redirect_to book
 	end
 
 	private
