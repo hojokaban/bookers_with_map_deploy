@@ -71,10 +71,17 @@ class CommentTest < ActionDispatch::IntegrationTest
 	end
 
 	test "should comment with Ajax" do
+		assert_no_difference 'BookComment.count' do
+			post comment_path, params: {book_comment:{content:"",
+													book_id: @book.id}}, xhr: true
+		end
+		assert_select "div#error_explanation"
+		assert flash.empty?
 		assert_difference 'BookComment.count', 1 do
 			post comment_path, params: {book_comment:{content:"comment",
 													book_id: @book.id}}, xhr: true
 		end
+		assert_template 'books/show'
 		assert_not flash.empty?
 		assert_match BookComment.last.content, response.body
 		assert_match "2 comments", response.body
