@@ -1,13 +1,9 @@
 <!-- recieves book -->
 <td>
 <% if book.favorited_by?(current_user) %>
-  <%= link_to favorites_path(book), method: :delete do %>
-    <i class="fas fa-heart"></i>
-  <% end %>
+	<%= render 'books/unlike', book: book %>
 <% else %>
-  <%= link_to favorite_path(book), method: :post do %>
-    <i class="far fa-heart"></i>
-  <% end %>
+	<%= render 'books/like', book: book %>
 <% end %>
-<%= book.favorites_count %>
+<span id="favorites"><%= book.favorites.count %></span>
 </td>
