@@ -75,5 +75,13 @@ class CommentTest < ActionDispatch::IntegrationTest
 			post comment_path, params: {book_comment:{content:"comment",
 													book_id: @book.id}}, xhr: true
 		end
+		assert_not flash.empty?
+		assert_match BookComment.last.content, response.body
+		assert_match "2 comments", response.body
+		assert_difference 'BookComment.count', -1 do
+			delete comments_path(BookComment.last), xhr: true
+		end
+		assert_not flash.empty?
+		assert_match "1 comment", response.body
 	end
 end
