@@ -1,0 +1,5 @@
+ <!-- recieves book -->
+
+ <%= link_to favorites_path(book), method: :delete, remote: true, id:"unlike_button_#{book.id.to_s}" do %>
+ 	<i class="fas fa-heart"></i>
+ <% end %>

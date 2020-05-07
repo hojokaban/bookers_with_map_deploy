@@ -1,0 +1,2 @@
+$("#like_button_<%= @book.id.to_s %>").html("<%= escape_javascript(render(partial:'favorites/unlike', locals:{book: @book})) %>");
+$("#favorites_<%= @book.id.to_s %>").html("<%= @book.favorites.count %>");

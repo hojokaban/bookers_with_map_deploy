@@ -1,0 +1,9 @@
+<!-- recieves book -->
+<td>
+<% if book.favorited_by?(current_user) %>
+	<%= render 'favorites/unlike', book: book %>
+<% else %>
+	<%= render 'favorites/like', book: book %>
+<% end %>
+<span id="favorites_<%= book.id.to_s %>"><%= book.favorites.count %></span>
+</td>

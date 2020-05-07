@@ -1,0 +1,5 @@
+ <!-- recieves book -->
+
+<%= link_to favorite_path(book), method: :post, remote: true, id:"like_button_#{book.id.to_s}" do %>
+    <i class="far fa-heart"></i>
+<% end %>
