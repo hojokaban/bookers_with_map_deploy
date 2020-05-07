@@ -2,6 +2,7 @@ class BookCommentsController < ApplicationController
 
 	def create
 		@comment = current_user.book_comments.new(comment_params)
+		@comments = BookComment.all
 		@book = Book.find(@comment.book_id)
 		if @comment.save
 			flash[:notice] = "successfully upload comment!"
@@ -9,7 +10,6 @@ class BookCommentsController < ApplicationController
 		else
 			@book_new = Book.new
 			@user = @book.user
-			@comments = BookComment.all
 			render "books/show"
 		end
 	end

@@ -31,7 +31,7 @@ class CommentTest < ActionDispatch::IntegrationTest
 
 		assert_no_difference 'BookComment.count' do
 			post comment_path, params: {book_comment:{content:"  ",
-				book_id: @book.id}}
+										book_id: @book.id}}
 			end
 			assert_template 'books/show'
 			assert_select "div#error_explanation"
@@ -39,7 +39,7 @@ class CommentTest < ActionDispatch::IntegrationTest
 
 		assert_difference 'BookComment.count', 1 do
 			post comment_path, params: {book_comment:{content:"comment",
-				book_id: @book.id}}
+										book_id: @book.id}}
 			end
 			follow_redirect!
 			assert_not flash.empty?
@@ -63,5 +63,12 @@ class CommentTest < ActionDispatch::IntegrationTest
 		end
 		assert_not flash.empty?
 
+	end
+
+	test "should comment with Ajax" do
+		assert_difference 'BookComment.count', 1 do
+			post comment_path, params: {book_comment:{content:"comment",
+													book_id: @book.id}}, xhr: true
+		end
 	end
 end
