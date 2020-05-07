@@ -62,5 +62,6 @@ class CommentTest < ActionDispatch::IntegrationTest
 			delete comments_path(@comment)
 		end
 		assert_not flash.empty?
+
 	end
 end
