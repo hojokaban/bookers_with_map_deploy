@@ -5,7 +5,6 @@ class FavoritesController < ApplicationController
 		#binding.pry
 		Favorite.new(book_id: @book.id,
 			         user_id: current_user.id).save unless @book.favorited_by?(current_user)
-		binding.pry
 		respond_to do |format|
 			format.html {redirect_back(fallback_location: books_path)}
 			format.js

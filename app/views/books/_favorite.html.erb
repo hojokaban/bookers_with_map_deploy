@@ -5,5 +5,5 @@
 <% else %>
 	<%= render 'books/like', book: book %>
 <% end %>
-<span id="favorites"><%= book.favorites.count %></span>
+<span id="favorites_<%= book.id.to_s %>"><%= book.favorites.count %></span>
 </td>
