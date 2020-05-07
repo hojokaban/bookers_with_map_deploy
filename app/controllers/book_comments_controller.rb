@@ -21,13 +21,13 @@ class BookCommentsController < ApplicationController
 			if @comment.user == current_user
 				@comment.destroy
 				@comments = @book.book_comments
-				flash.now[:notice] = "successfully deleted!"
+				flash.now[:notice] = "successfully deleted"
 				respond_to do |format|
 					format.html{redirect_to book}
 					format.js
 				end
 			else
-				flash[:notice] = "You cannot delete this comment"
+				flash.now[:notice] = "You cannot delete this comment"
 			end
 		end
 
