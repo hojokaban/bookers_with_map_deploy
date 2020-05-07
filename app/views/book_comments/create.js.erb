@@ -1,0 +1,4 @@
+
+$("#comment_table").html("<%= j(render(partial:'comment_box', locals:{comments: @comments, comment: @comment, book: @book})) %>");
+$(".comments_count").html("<%= pluralize(@book.book_comments.count, 'comment') %>");
+$(".comment_body").val("");

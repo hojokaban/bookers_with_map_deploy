@@ -1,0 +1,8 @@
+<!-- recieves comments book comment-->
+
+
+<table class="table" id="comment_table">
+	<%= render partial:'book_comments/comment', collection: comments %>
+	<tr border="none"><td class="col-xs-10"><%= render 'devise/shared/error_messages', resource: comment %></td></tr>
+	<tr border="none"><%= render 'book_comments/comment_form', book: book, comment: comment %></tr>
+</table>

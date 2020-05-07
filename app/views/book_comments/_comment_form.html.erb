@@ -1,0 +1,9 @@
+<!-- recieves book comment -->
+
+<td colspan="2">
+	<%= form_with model: comment, url: comment_path(book) do |f| %>
+	 <%= f.hidden_field :book_id, value: book.id %>
+	 <%= f.text_area :content, placeholder: "Comment here...", class:"col-xs-10 comment_body" %>
+	 <%= f.submit "Submit" %>
+	<% end %>
+</td>
