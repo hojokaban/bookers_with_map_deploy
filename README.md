@@ -1,4 +1,4 @@
-# Bookers with searching facility
+# Bookers with Ajax
 
 
 * Ruby version
