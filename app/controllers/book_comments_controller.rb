@@ -24,7 +24,10 @@ class BookCommentsController < ApplicationController
 		else
 			flash[:notice] = "You cannot delete this comment"
 		end
-		#redirect_to book
+		respond_to do |format|
+			format.html{redirect_to book}
+			format.js
+		end
 	end
 
 	private
