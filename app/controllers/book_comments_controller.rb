@@ -1,17 +1,37 @@
 class BookCommentsController < ApplicationController
-
+=begin
 	def create
 		@comment = current_user.book_comments.new(comment_params)
 		@comments = BookComment.all
 		@book = Book.find(@comment.book_id)
 		if @comment.save
 			flash[:notice] = "successfully upload comment!"
-			redirect_to @book
+			respond_to do |format|
+				format.html {redirect_to @book}
+				format.js
+			end
 		else
 			@book_new = Book.new
 			@user = @book.user
-			render "books/show"
+			respond_to do |format|
+				format.html {render "books/show" and return}
+				format.js
+			end
 		end
+=end
+
+	def create
+		@comment = current_user.book_comments.new(comment_params)
+		@comments = BookComment.all
+		@book = Book.find(@comment.book_id)
+			if @comment.save
+				flash[:notice] = "successfully upload comment!"
+				#redirect_to @book
+			else
+				@book_new = Book.new
+				@user = @book.user
+				#render "books/show" and return
+			end
 	end
 
 	def destroy
