@@ -33,5 +33,14 @@ class FavoriteInterfaceTest < ActionDispatch::IntegrationTest
 		assert_match @book.favorites.count.to_s, response.body
 	end
 
+	test "should follow/unfollow with Ajax" do
+		assert_difference 'Favorite.count', 1 do
+			post favorite_path(@book), xhr: true
+		end
+		assert_difference 'Favorite.count', -1 do
+			delete favorites_path(@book), xhr: true
+		end
+	end
+
 
 end
