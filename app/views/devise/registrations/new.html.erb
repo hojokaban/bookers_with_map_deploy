@@ -16,6 +16,26 @@
   </div>
 
   <div class="field">
+    <%= f.label :postal_code %><br />
+    <%= f.text_field :postal_code, class:"postal_code" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :prefecture %><br />
+    <%= f.collection_select :prefecture, JpPrefecture::Prefecture.all, :code, :name, placeholder:"県名", class:"prefecture" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :city %><br />
+    <%= f.text_field :city, placeholder:"市", class:"city" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :street %><br />
+    <%= f.text_field :street, placeholder:"町、通り等", class:"street" %>
+  </div>
+
+  <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>

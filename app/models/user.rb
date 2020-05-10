@@ -3,7 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
   include JpPrefecture
-  jp_prefecture :prefecture
+  jp_prefecture :prefecture, method_name: :pref
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -33,6 +34,14 @@ class User < ApplicationRecord
 
   def following?(user)
     following.include?(user)
+  end
+
+  def prefecture_name
+    JpPrefecture::Prefecture.find(code: prefecture).try(:name)
+  end
+
+  def prefecture_name=(prefecture_name)
+    self.prefecture = JpPrefecture::Prefecture.find(name: prefecture_name).code
   end
 
 end
