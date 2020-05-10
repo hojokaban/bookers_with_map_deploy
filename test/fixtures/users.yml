@@ -4,6 +4,10 @@ luffy:
   introduction: kaizokuou ni ore wa naru
   email: luffy@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  postal_code: 222
+  prefecture: 県
+  city: 市町
+  street: 111
 
 zoro:
   name: Roronoa Zoro

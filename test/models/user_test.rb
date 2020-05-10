@@ -41,4 +41,11 @@ class UserTest < ActiveSupport::TestCase
     assert_not luffy.following?(sanji)
   end
 
+  test "should include post address" do
+    assert_equal @user.postal_code, "222"
+    assert_equal @user.prefecture, "県"
+    assert_equal @user.city, "市町"
+    assert_equal @user.street, "111"
+  end
+
 end
