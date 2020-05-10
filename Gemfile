@@ -82,3 +82,5 @@ gem 'pry-byebug'
 gem 'faker'
 
 gem 'jp_prefecture'
+
+gem 'dotenv-rails'
