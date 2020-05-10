@@ -1,6 +1,8 @@
 <%= render 'books/books_feed', book: @book, user: @user, books: @books %>
 
+<% if user == current_user %>
 <div id="map"></div>
+<% end %>
 
 
 <script>

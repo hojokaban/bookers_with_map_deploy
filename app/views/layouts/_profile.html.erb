@@ -10,10 +10,12 @@
 			<th>introduction</th>
 			<th><%= user.introduction %></th>
 		</tr>
+		<% if user == current_user %>
 		<tr>
 			<th>Address</th>
 			<th id="address"><%= user.address %></th>
 		</tr>
+		<% end %>
 		<tr>
 			<th>follows</th>
 			<th><%= link_to user.following.count, following_user_path(user) %></th>
