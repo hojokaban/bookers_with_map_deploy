@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class UsersInterfaceTest < ActionDispatch::IntegrationTest
-  
+
   include Warden::Test::Helpers
 
 	def setup
@@ -43,6 +43,12 @@ class UsersInterfaceTest < ActionDispatch::IntegrationTest
 
 		assert_select "a[href=?]", book_path(@book)
 		assert_select "a[href=?]", edit_user_path(@user)
+    assert_select "div#map"
+
+    #non users/show
+
+    get user_path(@other_user)
+    assert_select "div#map", count: 0
 
 	end
 end

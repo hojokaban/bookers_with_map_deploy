@@ -29,3 +29,35 @@ $("#postal_code").jpostal({
   }
 });
 });
+
+let map
+let geocoder
+
+function initMap(){
+  // geocoderを初期化
+  geocoder = new google.maps.Geocoder()
+
+  map = new google.maps.Map(document.getElementById('map'), {
+  center: {lat: 40.7828, lng: 73.9653},
+  zoom: 16
+  });
+  codeAddress()
+  function codeAddress(){
+    var address = $('#address').text()
+    console.log(address)
+
+    // geocodingしたあとmapを移動
+    geocoder.geocode( { 'address': address}, function(results, status) {
+  if (status == 'OK') {
+　　　　　　　　　　　　// map.setCenterで地図が移動
+    map.setCenter(results[0].geometry.location);
+
+　　　　　　　　　　　　// google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
+    var marker = new google.maps.Marker({
+        map: map,
+        position: results[0].geometry.location
+    });
+  }
+});
+}
+}
