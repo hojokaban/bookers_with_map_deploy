@@ -80,3 +80,5 @@ gem 'jquery-rails'
 gem 'pry-byebug'
 
 gem 'faker'
+
+gem 'jp_prefecture'
