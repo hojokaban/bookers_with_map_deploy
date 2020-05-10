@@ -23,6 +23,8 @@ class User < ApplicationRecord
   validates :name, length: {in: 2..20}
   validates :introduction, length: {maximum: 50}
 
+  after_create :address
+
 
   def follow(user)
     following << user
@@ -42,6 +44,10 @@ class User < ApplicationRecord
 
   def prefecture_name=(prefecture_name)
     self.prefecture = JpPrefecture::Prefecture.find(name: prefecture_name).code
+  end
+
+  def address
+    self.address = self.prefecture + self.city + self.street
   end
 
 end
